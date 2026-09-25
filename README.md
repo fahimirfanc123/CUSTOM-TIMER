@@ -1,211 +1,254 @@
-<div align="center">
+# ⏱️ CTR — Custom Training Timer & Desktop Focus Suite
 
-# ⏱️ CTR — CUSTOM TRAINING TIMER & FOCUS SUITE
-
-<p align="center">
-  <a href="https://github.com/fahimirfanc123/CUSTOM-TIMER">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=3000&pause=1000&color=FF4500&center=true&vCenter=true&width=700&lines=PRECISION+INTERVAL+WORKOUT+TIMER;SYSTEM-WIDE+ALWAYS-ON-TOP+POMODORO;DUAL-PLATFORM+%E2%80%94+WEB+%2B+NATIVE+TAURI+2;DRIFT-COMPENSATED+DEADLINE+ENGINE" alt="CTR Typing SVG" />
-  </a>
-</p>
-
-<p align="center">
-  <strong>The ultimate precision interval workout companion and OS-level deep work Pomodoro suite.</strong><br>
-  Built with React 19, TypeScript Strict Mode, Tauri 2 (Rust), Web Audio Synthesis, and Dexie IndexedDB.
-</p>
-
-<p align="center">
-  <a href="#-01--quick-start-interactive-guide"><img src="https://img.shields.io/badge/QUICK_START-GET_RUNNING-FF4500?style=for-the-badge&logo=rocket&logoColor=white" alt="Quick Start" /></a>
-  <a href="#-05--windows-os-native-experience"><img src="https://img.shields.io/badge/WINDOWS_GUIDE-1--CLICK_SETUP-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows Guide" /></a>
-  <a href="#-03--system-wide-always-on-top-pomodoro"><img src="https://img.shields.io/badge/POMODORO-ALWAYS_ON_TOP-2EA44F?style=for-the-badge&logo=clockify&logoColor=white" alt="Pomodoro Guide" /></a>
-  <a href="#-09--test-matrix--verification"><img src="https://img.shields.io/badge/TESTS-233_PASSED-success?style=for-the-badge&logo=vitest&logoColor=white" alt="Tests" /></a>
-</p>
-
----
-
-### 🛡️ METADATA & BUILD STATUS
-
-[![React 19](https://img.shields.io/badge/React-19.3-61dafb.svg?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.6_(Strict)-3178c6.svg?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tauri 2](https://img.shields.io/badge/Tauri-2.0_(Rust)-FFC131.svg?style=flat-square&logo=tauri&logoColor=black)](https://tauri.app/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38b2ac.svg?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Vitest-2.1_(22_Suites)-729B1B.svg?style=flat-square&logo=vitest&logoColor=white)](https://vitest.dev/)
-[![Dexie IndexedDB](https://img.shields.io/badge/Dexie.js-IndexedDB-blueviolet.svg?style=flat-square&logo=databricks&logoColor=white)](https://dexie.org/)
-[![Web Audio API](https://img.shields.io/badge/Audio-Web_Audio_API-critical.svg?style=flat-square&logo=soundcharts&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+[![React](https://img.shields.io/badge/React-19.3-61dafb.svg?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6.svg?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tauri](https://img.shields.io/badge/Tauri-2.0-FFC131.svg?style=flat-square&logo=tauri)](https://tauri.app/)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6.svg?style=flat-square&logo=windows)](https://microsoft.com/windows)
+[![Linux](https://img.shields.io/badge/Linux-Ubuntu%20%7C%20Debian-FCC624.svg?style=flat-square&logo=linux)](https://ubuntu.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38b2ac.svg?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Vitest](https://img.shields.io/badge/Vitest-2.1-729B1B.svg?style=flat-square&logo=vitest)](https://vitest.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
-</div>
+> A high-performance, precision workout interval timer and system-wide Pomodoro focus suite built with **React 19**, **TypeScript**, **Tauri 2**, **Tailwind CSS**, and the **Web Audio API**.
 
 ---
 
-> *"Timing is everything. Whether you are sprinting through the final round of a HIIT circuit or locking in for 50 minutes of deep programming, CTR guarantees zero drift, zero audio clutter, and 100% focus."*
+## 🌟 Overview
+
+**CTR (Custom Training Timer)** is an all-in-one precision timer application engineered for high performance, dual-platform flexibility (Web and Native Desktop), and offline-first reliability. 
+
+CTR delivers two interconnected, world-class timing tools:
+1. **🏃 Active Workout Interval Engine**: Designed for athletes, HIIT enthusiasts, boxers, and strength trainers who need drift-compensated interval timing, hands-free voice coaching, procedural audio synthesis, and an intuitive workout builder.
+2. **🍅 System-Wide Pomodoro Focus Suite**: A productivity focus companion equipped with customizable Pomodoro intervals, daily statistics, task labeling, and a borderless **Always-On-Top Mini Window** that floats above all operating system windows (VS Code, terminal, browsers, Visual Studio, Discord, Office) even when the main app is minimized.
 
 ---
 
-## `01 / SYSTEM OVERVIEW & ARCHITECTURE`
+## ✨ Key Feature Highlights
 
-CTR is engineered from the ground up as a **dual-environment platform**. It operates seamlessly in any standard web browser while transforming into a native OS desktop application with system-level capabilities when compiled via **Tauri 2**.
+### ⏱️ 1. Precision Workout Timer Engine
+- **Drift-Compensated State Machine**: Millisecond-accurate timestamp calculations (`deadline - now`) immune to JavaScript event loop throttling and background tab suspension.
+- **Full Playback Controls**:
+  - Instant **Pause / Resume** with visual state feedback.
+  - **Skip (Next)** and **Previous** segment stepping.
+  - **Restart Current Set / Segment** on the fly.
+  - **Quick Time Modifiers**: Add or subtract time dynamically (`+10s`, `-10s`, `+30s`).
+- **Screen Wake Lock API**: Prevents mobile, tablet, and laptop screens from sleeping during active workouts.
+- **Page Visibility & Background Resilience**: Reconciles elapsed time instantly when returning from locked devices or unfocused tabs.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                     CTR UNIFIED ARCHITECTURE                                    │
-└─────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                  │
-                 ┌────────────────────────────────┴────────────────────────────────┐
-                 ▼                                                                 ▼
-   🏃 WORKOUT INTERVAL ENGINE                                      🍅 POMODORO FOCUS SUITE
-   - Drift-Compensated State Machine                               - Authoritative Controller
-   - Segment Builder & Compiler                                    - Multi-tier Cycle Engine (25/5/15)
-   - Procedural Web Audio Beeps & Horns                            - Single Audio Dispatch Guarantee
-   - Hands-Free Speech Voice Coach                                 - Workout vs Pomodoro Conflict Handler
-   - Dexie.js Offline Database                                     - Daily Focus Minutes & Stats
-                 │                                                                 │
-                 └────────────────────────────────┬────────────────────────────────┘
-                                                  ▼
-                                     IFocusDesktopBridge Adapter
-                                                  │
-                         ┌────────────────────────┴────────────────────────┐
-                         ▼                                                 ▼
-             [🌐 WEB / BROWSER MODE]                           [🖥️ TAURI 2 DESKTOP MODE]
-             WebFallbackDesktopBridge                          TauriDesktopBridge
-                         │                                                 │
-                         ▼                                                 ▼
-             In-App Floating Widget                            Native OS Mini HUD Window
-             <FloatingPomodoro />                              `pomodoro-mini` (260×120px)
-             (Draggable within browser viewport)               (Always-on-Top over ALL OS Apps)
-```
+### 🗣️ 2. Dual-Engine Audio & Procedural Sound FX
+- **Synthesized Web Audio FX**: Zero-latency, browser-native tone generation:
+  - 3-2-1 progressive countdown beeps (880 Hz / 1760 Hz)
+  - Work interval start horns & completion bells
+  - Rest period recovery chimes & victory fanfare
+- **Speech Synthesis Voice Coach**: Speaks upcoming exercise names, set numbers, and transition cues hands-free.
+- **Independent Audio Controls**: Quick-toggle voice announcements and sound effects independently.
 
----
-
-## `02 / VISUAL SHOWCASE & INTERFACE BLUEPRINTS`
-
-### 1. Active Workout Interval Player HUD (ASCII Blueprint)
-
-```
-┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-│  ← Back to Workouts              🔥 HIIT CIRCUIT (Round 2 of 3)                  🔊 Sound  🗣️ Voice │
-├────────────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                                │
-│             CURRENT EXERCISE                                   REMAINING WORK TIME              │
-│       ┌───────────────────────────┐                         ┌───────────────────────┐          │
-│       │   JUMPING JACKS (Set 3)   │                         │        00:45          │          │
-│       └───────────────────────────┘                         └───────────────────────┘          │
-│                                                                                                │
-│   ● PREPARE ────► ● WORK (Active) ────► ⏸ REST (Upcoming: Mountain Climbers) ────► 🏁 COMPLETE │
-│   [████████████████████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 68%        │
-│                                                                                                │
-│                 [ ⏮ Prev ]    [ ⏸ PAUSE / RESUME (Space) ]    [ ⏭ Skip (→) ]                   │
-│                               [ -10s ]      [ +10s ]                                           │
-└────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### 2. OS-Level Always-On-Top Pomodoro Mini Window (`pomodoro-mini`)
-
-```
-┌──────────────────────────────────────────────────┐
-│ 🍅 FOCUS • Set 2/4          📌 Pin  ↗ Expand  ✕ │ <── data-tauri-drag-region (Move anywhere)
-├──────────────────────────────────────────────────┤
-│                                                  │
-│                    24:38                         │ <── Dominant Authoritative Countdown
-│                                                  │
-│  Writing Technical Documentation...              │ <── Live Synchronized Task Label
-│  [██████████████████████░░░░░░░░░░░░░░░] 62%     │ <── Smooth Progress Bar
-├──────────────────────────────────────────────────┤
-│   [ ⏸ Pause ]          [ ⏭ Skip ]   [ ☕ Break ] │ <── Fast-Action Command Dispatches
-└──────────────────────────────────────────────────┘
-```
+### 🛠️ 3. Visual Workout Builder & Library
+- **Custom Routine Creator**: Build workouts with unlimited exercises, customized work periods, and multi-tiered rest durations.
+- **Granular Timing Parameters**:
+  - **Prepare Countdown**: 0 to 60 seconds
+  - **Exercise Work Time**: Configurable minutes and seconds
+  - **Rest Between Sets**: Tailored recovery time per movement
+  - **Rest After Exercise**: Transition periods before changing exercises
+  - **Rounds & Circuit Recovery**: Repeat circuits with dedicated round rest
+- **Reordering & Duplication**: Move exercise cards up/down or clone them in one click.
+- **Live Segment Preview Modal**: Inspect every computed segment and overall estimated duration before starting.
+- **Pre-Built Workout Presets**: Quick Timer (30s), Boxing Rounds (3×3 min), HIIT Circuit, and Strength Training.
 
 ---
 
-## `03 / SYSTEM-WIDE ALWAYS-ON-TOP POMODORO`
+### 🍅 4. System-Wide Pomodoro Focus Timer
 
-The Pomodoro Focus Suite in CTR is not just another browser timer. It is an **OS-level productivity companion** that keeps you locked into your flow state without getting in the way.
+CTR includes a Pomodoro and deep work timer seamlessly integrated into both Web and Desktop workflows:
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│ 🍅 Focus Session (25:00) ──► ☕ Short Break (05:00) ──► [Cycles 1-4] ──► 🏖️ Long Break (15:00)│
-└─────────────────────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│ 🍅 Focus Session (25:00) ──> ☕ Short Break (05:00) [Cycle] │
+│ 🍅 Focus Session (25:00) ──> 🏖️ Long Break (15:00) [Done]  │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-### ⚡ Technical Capabilities & Guarantees
-
-| Feature | Description |
-| :--- | :--- |
-| **Authoritative Single Engine** | Remaining time is calculated as `Math.max(0, deadline - now)`. The mini UI is a passive observer with 250ms render frames — eliminating time drift. |
-| **Always-On-Top Overlay** | Borderless, translucent, OS-level window that floats over VS Code, Visual Studio, Windows Terminal, Browser, and games. |
-| **Multi-Monitor Coordinate Memory** | Remembers where you placed it. On boot, validates coordinates against `availableMonitors()`; if a monitor was disconnected, it recovers to the bottom-right of your primary screen. |
-| **Single Audio Delivery** | Audio Coordinator only runs in the background main process. Zero duplicate chimes or voice echoes across multiple open windows. |
-| **Conflict Resolution Engine** | Starting a workout while Pomodoro is running alerts you with an interactive dialog: gracefully pause your Pomodoro or keep focus active. |
-| **Cross-Window Theme Sync** | Changing theme in the main app (Dark / Light / System) immediately broadcasts via IPC to update the mini window style. |
-| **Background Resilience** | Minimizing or hiding the main window never pauses or cancels active sessions. Closing the main window hides it to the system tray. |
+#### Key Pomodoro Features:
+- **Configurable Presets**:
+  - **Classic Pomodoro**: 25m Focus / 5m Short Break / 15m Long Break (4 cycles)
+  - **Short Focus**: 15m Focus / 3m Short Break / 10m Long Break (4 cycles)
+  - **Long Deep Work**: 50m Focus / 10m Short Break / 30m Long Break (2 cycles)
+  - **Custom Mode**: User-defined focus, break durations, and long break intervals.
+- **Automation Settings**:
+  - Optional **Auto-Start Breaks** and **Auto-Start Focus** options.
+  - Interactive **"Ready for Break?"** and **"Ready to Focus?"** transition prompts when auto-start is disabled.
+- **Task Labeling**: Add customizable task descriptions (e.g., *"Writing Technical Spec"*, *"Reviewing PR #42"*) that synchronize everywhere.
+- **Daily Focus Statistics**: Tracks total daily completed sessions and focus minutes persisted in local storage.
+- **Intelligent Workout Conflict Resolver**: If you start a workout while a Pomodoro is running, CTR prompts a conflict dialog allowing you to gracefully pause the Pomodoro and start the workout.
+- **Single Audio Engine Guarantee**: Background timer dispatches exactly one audio chime/voice cue upon completion without duplicate sound across multi-window views.
 
 ---
 
-## `04 / DUAL-PLATFORM CAPABILITIES COMPARISON`
+### 🖥️ 5. Native Desktop Integration (Tauri 2)
 
-| Capability | 🌐 Web Browser (Chrome/Edge/Firefox) | 🖥️ Native Desktop (Tauri 2 on Win/Linux/macOS) |
-| :--- | :---: | :---: |
-| **Drift-Compensated Workout Timer** | ✅ Full Support | ✅ Full Support |
-| **Voice Coach (Speech Synthesis)** | ✅ Full Support | ✅ Full Support |
-| **Procedural Audio FX (Web Audio API)** | ✅ Zero Latency | ✅ Zero Latency |
-| **Visual Workout Builder & Presets** | ✅ Full Support | ✅ Full Support |
-| **Offline IndexedDB Storage (Dexie.js)** | ✅ Full Support | ✅ Full Support |
-| **Screen Wake Lock API** | ✅ Supported (Mobile/Tablet) | ✅ Native OS Screen Keep-Awake |
-| **Mini Pomodoro Experience** | In-App Draggable `<FloatingPomodoro />` | **Native OS Borderless Always-On-Top Window** |
-| **System Tray Context Menu** | ❌ Browser Limited | **✅ Native Taskbar Tray (Pause, Open, Quit)** |
-| **Global Background Execution** | Tab Throttling Protected | **✅ Zero OS Throttling & Minimize-to-Tray** |
-| **Multi-Monitor Position Recovery** | ❌ Browser Viewport Only | **✅ Hardware Multi-Monitor Boundary Validation** |
+When running as an installed desktop app on **Windows (10/11)**, **Linux (Ubuntu/Debian)**, or **macOS**:
+
+- **Always-On-Top Borderless Mini Window**:
+  - Compact ($260 \times 120\,\text{px}$), borderless, transparent HUD that stays visible over code editors, terminals, Visual Studio, and full-screen tools.
+  - Smooth native window dragging (`data-tauri-drag-region`).
+  - Controls: Play/Pause (`⏸`/`▶`), Skip (`⏭`), Expand to Main App (`↗`), Pin (`📌`), and Close (`✕`).
+- **Multi-Monitor Position Validation**:
+  - Automatically remembers its screen coordinates.
+  - Validates coordinates against connected monitors on startup; if a monitor was unplugged, it safely recovers to the bottom-right of the primary display.
+- **System Tray Controls**:
+  - Native OS tray menu with instant actions: *Open CTR*, *Show Pomodoro Mini*, *Hide Pomodoro Mini*, *Pause / Resume*, and *Quit*.
+- **Background Execution & Window Lifecycle**:
+  - Minimizing or hiding the main window **never** stops or pauses countdowns.
+  - Closing the main window while Focus is running hides it to the tray, keeping your session uninterrupted.
+- **Cross-Window Theme Synchronization**:
+  - Switching between Dark Mode, Light Mode, or System Auto-detect in the main window propagates immediately to the mini window via Tauri IPC events.
 
 ---
 
-## `05 / WINDOWS OS NATIVE EXPERIENCE`
+## 🪟 Experiencing CTR on Windows OS
 
-CTR is fully optimized for **Windows 10** and **Windows 11 (x64 & ARM64)**.
+CTR is fully optimized for **Windows 10** and **Windows 11**, providing two distinct ways to run the app:
 
-```
-       ┌──────────────────────────────────────────────────────────────┐
-       │ Windows Taskbar ──► [ ^ ] [ 🔊 ] [ 🌐 ] [ 🍅 CTR Tray ] [ 12:00 ] │
-       └──────────────────────────────────────────────────────────────┘
-```
+### Option A: Native Windows Desktop App (Recommended for Best Experience)
 
-### 🌟 Windows Native Features:
-1. **Windows Notification Area Tray**: Lives in your taskbar tray near the clock. Right-click for instant actions (*Open CTR*, *Show/Hide Mini*, *Pause/Resume*, *Quit*).
-2. **True Windows Always-On-Top**: Stays pinned on top of Visual Studio, VS Code, Office, Discord, Slack, and full-screen browsers.
-3. **High-DPI Scaling**: Crisp typography and vector graphics scaled across $100\%$, $125\%$, $150\%$, and $200\%$ display scaling on 1080p, 1440p, and 4K displays.
-4. **PWA Support**: In Microsoft Edge or Chrome, click `Install CTR` to run as a dedicated Windows App without compiling Rust.
+Running CTR as a native desktop application unlocks the **OS-level Always-on-Top Pomodoro Mini Window**, allowing you to code in Visual Studio / VS Code, write documents, or browse while your timer stays visible on top of all Windows apps.
 
-### 🚀 1-Click Windows Setup (PowerShell):
-Open **PowerShell** as Administrator and paste:
+#### ✨ Native Windows Capabilities:
+- **System Tray Integration**: CTR lives in the Windows taskbar notification area (bottom-right tray near the clock). Right-click the tray icon to quickly Pause/Resume, Show/Hide the Mini Window, or Open the main CTR window.
+- **Always-On-Top Over Full Windows Apps**: The mini timer floats over any application (VS Code, Visual Studio, Chrome, Discord, Slack, Windows Terminal, Games in borderless mode).
+- **Multi-Monitor & High-DPI Support**: Automatically scales on high-resolution displays (1080p, 1440p, 4K) and moves smoothly across multi-monitor setups.
+- **Native Windows Hotkeys & Minimize-to-Tray**: Minimizing or closing the main CTR window keeps your Pomodoro countdown running silently in the background.
+
+#### 🚀 1-Minute Windows Setup via PowerShell:
+Open **PowerShell** as Administrator and run:
 
 ```powershell
-# 1. Install prerequisites via winget
+# 1. Install Node.js, Git, and Rust via winget
 winget install OpenJS.NodeJS -e
 winget install Git.Git -e
 winget install Rustlang.Rustup -e
+
+# 2. Install Visual Studio C++ Build Tools (if not already installed)
 winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--passive --wait --add Microsoft.VisualStudio.Workload.VCTools;includeRecommended"
 
-# 2. Clone repository & launch desktop application
+# 3. Reload your environment and clone CTR
+refreshenv # or restart PowerShell
 git clone https://github.com/fahimirfanc123/CUSTOM-TIMER.git
 cd CUSTOM-TIMER
+
+# 4. Install dependencies and launch Windows Desktop App
 npm install
 npm run tauri:dev
 ```
 
-### 📦 Build Windows `.msi` / `.exe` Installer:
+#### 📦 Building a Native Windows Installer (`.msi` / `.exe`):
+To generate a standalone Windows installer you can share or install permanently:
 ```powershell
 npm run tauri:build
 ```
-Your standalone installer will be built in:
-`src-tauri\target\release\bundle\msi\CTR - Custom Training Timer_x64_en-US.msi`
+The installer will be generated in:
+`src-tauri\target\release\bundle\msi\CTR - Custom Training Timer_x64_en-US.msi` and `nsis\*.exe`.
 
 ---
 
-## `06 / LINUX & MACOS QUICK START`
+### Option B: Windows Browser & PWA (Progressive Web App)
 
-<details open>
-<summary><b>🐧 Ubuntu / Debian Linux Setup</b></summary>
+If you do not want to install Rust and build tools, you can run CTR directly in your favorite Windows web browser (**Microsoft Edge**, **Google Chrome**, **Brave**, **Firefox**):
+
+1. **Run Locally**:
+   ```powershell
+   npm install
+   npm run dev
+   ```
+2. **Open in Microsoft Edge or Google Chrome**: Navigate to `http://localhost:5173`.
+3. **Install as a Windows App (PWA)**:
+   - In **Microsoft Edge**: Click the `App available` icon in the address bar (or menu `...` $\rightarrow$ `Apps` $\rightarrow$ `Install CTR`).
+   - In **Google Chrome**: Click the install icon in the address bar $\rightarrow$ `Install CTR`.
+4. CTR will now have its own dedicated Windows taskbar icon, standalone window, and desktop shortcut!
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+### Workout Player (Desktop & Web)
+| Key | Action |
+| :--- | :--- |
+| `Space` | **Pause / Resume** active workout |
+| `→` (Right Arrow) | **Skip** to next segment |
+| `←` (Left Arrow) | **Previous** segment |
+| `+` / `=` | Add **+10 seconds** to current segment |
+| `-` | Subtract **-10 seconds** from current segment |
+
+### Pomodoro Mini Window (Desktop)
+| Action | Control |
+| :--- | :--- |
+| **Move Window** | Click and drag any empty space in the mini window |
+| **Toggle Always-On-Top** | Click the Pin icon (`📌`) |
+| **Expand to Main App** | Click the Expand icon (`↗`) |
+| **Quick Play / Pause** | Click the Play/Pause button |
+| **Advance / Skip Phase** | Click the Skip button (`⏭`) |
+
+---
+
+## 🏗️ Architecture & Project Structure
+
+```
+CTR/
+├── src/
+│   ├── app/                      # Main application shell & router
+│   │   ├── App.tsx               # View coordinator (Home, Player, Builder, Focus)
+│   │   └── app.css               # Base styles & Tailwind directives
+│   ├── core/                     # Pure domain logic (Framework-agnostic)
+│   │   ├── audio/                # Web Audio sound engine & voice coach
+│   │   ├── builder/              # Segment compiler & workout validator
+│   │   ├── engine/               # Precision deadline timer engine & clock
+│   │   ├── focus/                # FocusTimerController, FocusAudio, DesktopBridge
+│   │   ├── models/               # Domain TypeScript interfaces & types
+│   │   └── storage/              # IndexedDB database via Dexie.js
+│   ├── features/                 # Feature-driven UI components
+│   │   ├── focus-timer/          # FocusScreen, PomodoroMiniWindow, FloatingPomodoro
+│   │   ├── workout-builder/      # WorkoutBuilder, ExerciseCard, PreviewModal
+│   │   └── workout-player/       # WorkoutPlayer HUD, Controls, CompleteScreen
+│   ├── shared/                   # Shared UI, theme, hooks, utilities
+│   │   ├── components/           # Button, Modal, Stepper, DurationInput
+│   │   ├── hooks/                # useWakeLock, useKeyboardShortcuts
+│   │   ├── theme/                # ThemeProvider, ThemeToggle (Dark/Light/System)
+│   │   └── utils/                # Formatters and coordinate calculators
+│   └── main.tsx                  # Web & Mini-window route entry point
+├── src-tauri/                    # Tauri 2 Desktop Backend (Rust)
+│   ├── capabilities/             # Desktop permissions & window capabilities
+│   ├── src/                      # Rust main entry, tray menu, window lifecycle
+│   ├── Cargo.toml                # Rust dependencies (tauri, serde, etc.)
+│   └── tauri.conf.json           # Tauri multi-window app configuration
+├── package.json
+└── vite.config.ts
+```
+
+---
+
+## 🚀 Installation & Setup Guide
+
+### 📋 Prerequisites
+
+#### 1. For Web Development (All Platforms)
+- **Node.js**: Version `18.0.0` or higher ([Download Node.js](https://nodejs.org/))
+- **npm** (comes with Node) or `pnpm` / `yarn`
+
+#### 2. For Desktop Development (Tauri 2)
+To build and run native desktop packages, install the required OS dependencies:
+
+<details>
+<summary><b>🪟 Windows (10 / 11)</b></summary>
+
+1. Install **Microsoft Visual Studio C++ Build Tools** via the [Visual Studio Installer](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (check *"Desktop development with C++"*).
+2. Install **WebView2** (pre-installed on Windows 10 & 11).
+3. Install **Rust** via [rustup-init.exe](https://www.rust-lang.org/tools/install) or `winget install Rustlang.Rustup`.
+</details>
+
+<details>
+<summary><b>🐧 Ubuntu / Debian Linux</b></summary>
 
 ```bash
-# 1. Install system dependencies
 sudo apt update
 sudo apt install -y \
   libwebkit2gtk-4.1-dev \
@@ -220,195 +263,147 @@ sudo apt install -y \
   librsvg2-dev \
   pkg-config
 
-# 2. Install Rust
+# Install Rust Toolchain
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
-
-# 3. Clone & Launch
-git clone https://github.com/fahimirfanc123/CUSTOM-TIMER.git
-cd CUSTOM-TIMER
-npm install
-npm run tauri:dev
 ```
 </details>
 
 <details>
-<summary><b>🍎 macOS Setup</b></summary>
+<summary><b>🍎 macOS</b></summary>
 
 ```bash
-# 1. Install Xcode tools & Rust
+# Install Xcode Command Line Tools
 xcode-select --install
+
+# Install Rust Toolchain
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
-
-# 2. Clone & Launch
-git clone https://github.com/fahimirfanc123/CUSTOM-TIMER.git
-cd CUSTOM-TIMER
-npm install
-npm run tauri:dev
 ```
 </details>
 
 ---
 
-## `07 / KEYBOARD SHORTCUTS MATRIX`
-
-### 🏋️ Active Workout HUD
-| Key | Action | Function |
-| :---: | :--- | :--- |
-| `Space` | **Pause / Resume** | Toggle countdown state instantly |
-| `→` | **Skip Next** | Step forward to the next work/rest interval |
-| `←` | **Previous** | Return to previous exercise segment |
-| `+` / `=` | **+10 Seconds** | Add time to the active segment on the fly |
-| `-` | **-10 Seconds** | Deduct time from the active segment |
-
-### 🍅 Pomodoro Mini Window
-| Action | Control | Function |
-| :---: | :--- | :--- |
-| **Drag** | `data-tauri-drag-region` | Click and hold anywhere in the window to reposition |
-| **Pin** | Click `📌` | Toggle Always-On-Top OS priority |
-| **Expand** | Click `↗` | Restore and bring main CTR window into focus |
-| **Play/Pause** | Click `⏸` / `▶` | Dispatch pause/resume to background controller |
-| **Skip** | Click `⏭` | Immediately transition to the next phase |
-
----
-
-## `08 / TECH SPECTRUM & PROCEDURAL AUDIO`
-
-<div align="center">
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                       CORE TECH SPECTRUM                                        │
-├───────────────────┬───────────────────┬───────────────────┬───────────────────┬─────────────────┤
-│     FRONTEND      │      DESKTOP      │      STORAGE      │      AUDIO FX     │     TESTING     │
-├───────────────────┼───────────────────┼───────────────────┼───────────────────┼─────────────────┤
-│  React 19 (Hooks) │  Tauri 2 (Rust)   │  Dexie.js (IDB)   │  Web Audio API    │  Vitest 2.1     │
-│  TypeScript 5.6   │  Tauri Event Bus  │  LocalStorage     │  SpeechSynthesis  │  Testing Lib    │
-│  Tailwind CSS 3.4 │  System Tray API  │  IndexedDB v4     │  Procedural Synth │  Coverage 100%  │
-└───────────────────┴───────────────────┴───────────────────┴───────────────────┴─────────────────┘
-```
-
-<br>
-
-<img src="https://skillicons.dev/icons?i=react,ts,rust,tailwind,vite,html,css,linux,windows,apple&theme=dark" alt="Tech Stack Icons" />
-
-</div>
-
-### 🔊 Procedural Audio & Synthesis Chart
-CTR does not rely on static MP3/WAV files that can fail to load. All sound effects are **synthesized procedurally** using the browser's native `AudioContext`:
-
-| Cue Identifier | Frequency / Tone Pattern | Waveform | Purpose |
-| :--- | :--- | :---: | :--- |
-| `COUNTDOWN_TICK` | $880\,\text{Hz}$ (A5), $100\text{ms}$ pulse | Sine | 3-2-1 prepare and final seconds countdown |
-| `COUNTDOWN_FINAL` | $1760\,\text{Hz}$ (A6), $250\text{ms}$ high burst | Sine | Exact transition second trigger |
-| `WORK_START` | Double fanfare ($587.33\,\text{Hz} \rightarrow 880\,\text{Hz}$) | Triangle | Work period beginning horn |
-| `WORK_COMPLETE` | Major triad chord ($523.25\,\text{Hz} \rightarrow 659.25\,\text{Hz} \rightarrow 783.99\,\text{Hz}$) | Sine | Exercise completion bell |
-| `FOCUS_COMPLETE` | Harmonized chime ($523.25\,\text{Hz} + 659.25\,\text{Hz}$) | Sine | Pomodoro focus session finish |
-| `BREAK_COMPLETE` | Dual rising notification tone | Sine | Rest/Break completion alert |
-
----
-
-## `09 / TEST MATRIX & VERIFICATION`
-
-CTR features **22 automated test suites** containing **233 unit and integration tests** with **100% pass rate**.
+### 📥 1. Clone & Install Dependencies
 
 ```bash
+# Clone the repository
+git clone https://github.com/fahimirfanc123/CUSTOM-TIMER.git
+cd CUSTOM-TIMER
+
+# Install NPM packages
+npm install
+```
+
+---
+
+### 🌐 2. Running the Web Application
+
+Start the local Vite development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+### 🖥️ 3. Running the Desktop Application (Tauri)
+
+Launch the native desktop application with live-reloading:
+
+```bash
+npm run tauri:dev
+```
+
+---
+
+### 🧪 4. Running the Test Suites
+
+CTR comes with 22 test suites containing **233 unit and integration tests** covering the timer engines, audio synthesis, builders, desktop bridge adapters, cross-window IPC synchronization, and theme handling.
+
+```bash
+# Run the full test suite once
 npm test
-```
 
-```
- ✓ src/core/engine/__tests__/timerEngine.test.ts (26 tests)
- ✓ src/core/audio/__tests__/audioCoordinator.test.ts (16 tests)
- ✓ src/core/audio/__tests__/progressiveAudio.test.ts (3 tests)
- ✓ src/core/audio/__tests__/durationFormatter.test.ts (4 tests)
- ✓ src/core/builder/__tests__/segmentBuilder.test.ts (8 tests)
- ✓ src/core/builder/__tests__/validator.test.ts (14 tests)
- ✓ src/core/storage/__tests__/workoutRepository.test.ts (8 tests)
- ✓ src/core/focus/__tests__/focusTimerController.test.ts (27 tests)
- ✓ src/core/focus/__tests__/focusAudio.test.ts (7 tests)
- ✓ src/core/focus/__tests__/desktopBridge.test.ts (8 tests)
- ✓ src/features/focus-timer/__tests__/focusStateAndUI.test.tsx (8 tests)
- ✓ src/features/focus-timer/__tests__/workoutConflict.test.tsx (5 tests)
- ✓ src/features/focus-timer/__tests__/desktopSharedState.test.ts (10 tests)
- ✓ src/features/focus-timer/__tests__/desktopLifecycle.test.ts (7 tests)
- ✓ src/features/focus-timer/__tests__/desktopTimingAndAudio.test.ts (11 tests)
- ✓ src/features/focus-timer/__tests__/desktopThemeSync.test.ts (4 tests)
- ✓ src/features/workout-player/__tests__/workoutPlayer.test.tsx (27 tests)
- ✓ src/features/workout-player/__tests__/homeIntegration.test.tsx (8 tests)
- ✓ src/features/workout-player/__tests__/sessionController.test.ts (8 tests)
- ✓ src/features/workout-builder/__tests__/workoutBuilder.test.tsx (10 tests)
- ✓ src/features/workout-builder/__tests__/builderDomain.test.ts (9 tests)
- ✓ src/shared/theme/__tests__/theme.test.tsx (5 tests)
-
-Test Files  22 passed (22)
-     Tests  233 passed (233)
-  Duration  ~48s
+# Run tests in interactive watch mode
+npm run test:watch
 ```
 
 ---
 
-## `10 / REPOSITORY & PROJECT STRUCTURE`
+### 📦 5. Building for Production
 
+#### Build Web Production Bundle:
+```bash
+npm run build
 ```
-CTR/
-├── src/
-│   ├── app/                      # Main application shell & router
-│   │   ├── App.tsx               # View router (Home, Player, Builder, Focus)
-│   │   └── app.css               # Base CSS & Tailwind directives
-│   ├── core/                     # Pure domain logic (Framework-agnostic)
-│   │   ├── audio/                # Web Audio SoundEngine & VoiceCoach
-│   │   ├── builder/              # Segment compiler & workout validator
-│   │   ├── engine/               # Precision deadline timer engine & clock
-│   │   ├── focus/                # FocusTimerController, FocusAudio, DesktopBridge
-│   │   ├── models/               # Domain TypeScript interfaces & types
-│   │   └── storage/              # IndexedDB database via Dexie.js
-│   ├── features/                 # Feature-driven UI components
-│   │   ├── focus-timer/          # FocusScreen, PomodoroMiniWindow, FloatingPomodoro
-│   │   ├── workout-builder/      # WorkoutBuilder, ExerciseCard, PreviewModal
-│   │   └── workout-player/       # WorkoutPlayer HUD, Controls, CompleteScreen
-│   ├── shared/                   # Shared UI, theme, hooks, utilities
-│   │   ├── components/           # Button, Modal, Stepper, DurationInput
-│   │   ├── hooks/                # useWakeLock, useKeyboardShortcuts
-│   │   ├── theme/                # ThemeProvider, ThemeToggle (Dark/Light/System)
-│   │   └── utils/                # Time formatters & geometry calculators
-│   └── main.tsx                  # Web & Mini-window route entry point
-├── src-tauri/                    # Tauri 2 Desktop Backend (Rust)
-│   ├── capabilities/             # Desktop permissions & window capabilities
-│   ├── src/                      # Rust main entry, tray menu, window lifecycle
-│   ├── Cargo.toml                # Rust dependencies (tauri, serde, etc.)
-│   └── tauri.conf.json           # Tauri multi-window app configuration
-├── package.json
-└── vite.config.ts
+The compiled, minified bundle will be generated in `dist/`.
+
+#### Build Native Desktop Installers:
+```bash
+npm run tauri:build
 ```
+This builds standalone native binaries and installers in `src-tauri/target/release/bundle/`:
+- **Windows**: `.msi` and `.exe` (NSIS) installers
+- **Linux**: `.deb` package and standalone `.AppImage`
+- **macOS**: `.dmg` disk image and `.app` bundle
 
 ---
 
-## `11 / CONTRIBUTING & DEVELOPMENT`
+## 📖 User Guide: How to Use CTR
 
-Contributions, issues, and feature requests are welcome!
+### 🎯 Step 1: Navigating the Home Screen
+- **My Workouts**: View, start, edit, duplicate, or delete your custom saved routines.
+- **Presets Library**: Quick-start balanced routines (Quick Timer, Boxing Rounds, HIIT Circuit, Strength Training) or customize them by cloning into the builder.
+- **Focus Timer Launcher**: Access the full-screen Pomodoro timer from the top navigation bar.
+- **Theme Toggle**: Switch between Light, Dark, or System mode from the header.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: add some amazing feature'`)
-4. Verify Tests & Types (`npm test && npx tsc --noEmit`)
-5. Push to the Branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
+### 🏋️ Step 2: Building a Custom Workout
+1. Click **"Create Workout"** on the Home screen.
+2. Enter a **Workout Title** and optional description.
+3. Configure **Prepare Countdown** and global **Rounds**.
+4. Add exercises with custom **Work Duration**, **Rest Between Sets**, and **Rest After Exercise**.
+5. Use the **Move Up / Move Down** buttons to reorder exercises, or **Duplicate** to repeat movements.
+6. Click **"Preview Workout"** to inspect the sequence of segments.
+7. Click **"Save Workout"** to persist your routine locally in IndexedDB.
+
+### ⚡ Step 3: Running an Active Workout
+1. Click **"Start"** on any workout card.
+2. The HUD displays the current segment, upcoming set, elapsed workout time, and segment countdown.
+3. Use keyboard shortcuts (`Space` to pause/resume, `→` to skip) or touch controls.
+4. Voice Coach speaks announcements before each set, while audio cues signal countdowns.
+
+### 🍅 Step 4: Using the Pomodoro Focus Timer
+1. Click **"Focus"** in the top navigation bar.
+2. Set your task label (e.g., *"Coding Windows Module"*).
+3. Select a preset (**Classic 25/5**, **Short 15/3**, **Deep 50/10**, or **Custom** via Settings ⚙️).
+4. Click **"Start Focus"** to begin countdown.
+5. **Minimize Focus**:
+   - **In Web**: Minimizes to a draggable in-app widget (`FloatingPomodoro`).
+   - **In Desktop**: Minimizes to the borderless, system-wide **Always-On-Top Mini Window**.
+6. When the timer completes, a chime sounds and you are guided into your break.
+7. Click **"Expand"** (`↗`) at any time to return to the full CTR application.
 
 ---
 
-## `12 / LICENSE`
+## 🧰 Tech Stack
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+| Domain | Technology |
+| :--- | :--- |
+| **Frontend Framework** | [React 19](https://react.dev/) |
+| **Desktop Platform** | [Tauri 2](https://tauri.app/) (Rust Backend) |
+| **Language** | [TypeScript 5.6](https://www.typescriptlang.org/) (Strict Mode) & [Rust](https://www.rust-lang.org/) |
+| **Styling & Design System** | [Tailwind CSS 3.4](https://tailwindcss.com/) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Local Persistence** | [Dexie.js](https://dexie.org/) (IndexedDB) & `localStorage` |
+| **Build & Tooling** | [Vite 5](https://vitejs.dev/) & [Cargo](https://doc.rust-lang.org/cargo/) |
+| **Testing Framework** | [Vitest 2.1](https://vitest.dev/) & [React Testing Library](https://testing-library.com/react) |
+| **Audio Synthesis** | Web Audio API (`AudioContext`, `OscillatorNode`, `GainNode`) & Web Speech API |
 
 ---
 
-<div align="center">
+## 📄 License
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=16&duration=3000&pause=1000&color=2EA44F&center=true&vCenter=true&width=500&lines=CTR+%E2%80%94+PRECISION+MEETS+PERFORMANCE;TRAIN+HARDER.+FOCUS+DEEPER.;BUILT+WITH+PASSION." alt="Footer Typing SVG" />
-</p>
-
-⭐ **Found this useful? Star the repository on [GitHub](https://github.com/fahimirfanc123/CUSTOM-TIMER)!**
-
-</div>
+This project is open source and available under the [MIT License](LICENSE).
