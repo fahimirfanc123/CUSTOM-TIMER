@@ -17,7 +17,7 @@ export function validateWorkout(workout: Workout): void {
   }
 
   if (typeof workout.title !== 'string' || workout.title.trim() === '') {
-    throw new ValidationError('Workout title must be a non-empty string');
+    throw new ValidationError('Workout title cannot be blank');
   }
 
   if (!Number.isInteger(workout.rounds) || workout.rounds < 1) {

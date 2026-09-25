@@ -9,4 +9,5 @@ export type EngineStatus =
   | 'IDLE'
   | 'RUNNING'
   | 'PAUSED'
-  | 'COMPLETED';
+  | 'COMPLETED'
+  | 'STOPPED';

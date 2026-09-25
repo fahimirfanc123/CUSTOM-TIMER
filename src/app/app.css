@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-base: #09090b;
+  --color-bg-surface: #18181b;
+  --color-bg-surface-elevated: #27272a;
+  --color-border-subtle: #27272a;
+  --color-border-strong: #3f3f46;
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+
+  --color-accent-work: #10b981;
+  --color-accent-rest: #38bdf8;
+  --color-accent-prepare: #f59e0b;
+  --color-accent-danger: #f43f5e;
+}
+
+html.light {
+  color-scheme: light;
+  --color-bg-base: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-elevated: #f1f5f9;
+  --color-border-subtle: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+  }
+
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Accessible touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+
+  /* Compact button exceptions when inside tighter toolbars */
+  button.touch-target-compact {
+    min-height: 36px;
+  }
+}
+
+/* Fluid Typography Utilities */
+.text-fluid-hero {
+  font-size: clamp(3.5rem, 14vw, 8rem);
+  line-height: 1;
+}
+
+.text-fluid-title {
+  font-size: clamp(1.25rem, 4vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.text-fluid-stat {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
