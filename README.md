@@ -3,6 +3,8 @@
 [![React](https://img.shields.io/badge/React-19.3-61dafb.svg?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6.svg?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tauri](https://img.shields.io/badge/Tauri-2.0-FFC131.svg?style=flat-square&logo=tauri)](https://tauri.app/)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6.svg?style=flat-square&logo=windows)](https://microsoft.com/windows)
+[![Linux](https://img.shields.io/badge/Linux-Ubuntu%20%7C%20Debian-FCC624.svg?style=flat-square&logo=linux)](https://ubuntu.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38b2ac.svg?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Vitest](https://img.shields.io/badge/Vitest-2.1-729B1B.svg?style=flat-square&logo=vitest)](https://vitest.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -17,7 +19,7 @@
 
 CTR delivers two interconnected, world-class timing tools:
 1. **🏃 Active Workout Interval Engine**: Designed for athletes, HIIT enthusiasts, boxers, and strength trainers who need drift-compensated interval timing, hands-free voice coaching, procedural audio synthesis, and an intuitive workout builder.
-2. **🍅 System-Wide Pomodoro Focus Suite**: A productivity focus companion equipped with customizable Pomodoro intervals, daily statistics, task labeling, and a borderless **Always-On-Top Mini Window** that floats above all operating system windows (VS Code, terminal, browsers) even when the main app is minimized.
+2. **🍅 System-Wide Pomodoro Focus Suite**: A productivity focus companion equipped with customizable Pomodoro intervals, daily statistics, task labeling, and a borderless **Always-On-Top Mini Window** that floats above all operating system windows (VS Code, terminal, browsers, Visual Studio, Discord, Office) even when the main app is minimized.
 
 ---
 
@@ -30,7 +32,7 @@ CTR delivers two interconnected, world-class timing tools:
   - **Skip (Next)** and **Previous** segment stepping.
   - **Restart Current Set / Segment** on the fly.
   - **Quick Time Modifiers**: Add or subtract time dynamically (`+10s`, `-10s`, `+30s`).
-- **Screen Wake Lock API**: Prevents mobile and tablet screens from sleeping during active workouts.
+- **Screen Wake Lock API**: Prevents mobile, tablet, and laptop screens from sleeping during active workouts.
 - **Page Visibility & Background Resilience**: Reconciles elapsed time instantly when returning from locked devices or unfocused tabs.
 
 ### 🗣️ 2. Dual-Engine Audio & Procedural Sound FX
@@ -84,10 +86,10 @@ CTR includes a Pomodoro and deep work timer seamlessly integrated into both Web 
 
 ### 🖥️ 5. Native Desktop Integration (Tauri 2)
 
-When running as an installed desktop app on **Linux**, **Windows**, or **macOS**:
+When running as an installed desktop app on **Windows (10/11)**, **Linux (Ubuntu/Debian)**, or **macOS**:
 
 - **Always-On-Top Borderless Mini Window**:
-  - Compact ($260 \times 120\,\text{px}$), borderless, transparent HUD that stays visible over code editors, terminals, and full-screen tools.
+  - Compact ($260 \times 120\,\text{px}$), borderless, transparent HUD that stays visible over code editors, terminals, Visual Studio, and full-screen tools.
   - Smooth native window dragging (`data-tauri-drag-region`).
   - Controls: Play/Pause (`⏸`/`▶`), Skip (`⏭`), Expand to Main App (`↗`), Pin (`📌`), and Close (`✕`).
 - **Multi-Monitor Position Validation**:
@@ -103,9 +105,72 @@ When running as an installed desktop app on **Linux**, **Windows**, or **macOS**
 
 ---
 
+## 🪟 Experiencing CTR on Windows OS
+
+CTR is fully optimized for **Windows 10** and **Windows 11**, providing two distinct ways to run the app:
+
+### Option A: Native Windows Desktop App (Recommended for Best Experience)
+
+Running CTR as a native desktop application unlocks the **OS-level Always-on-Top Pomodoro Mini Window**, allowing you to code in Visual Studio / VS Code, write documents, or browse while your timer stays visible on top of all Windows apps.
+
+#### ✨ Native Windows Capabilities:
+- **System Tray Integration**: CTR lives in the Windows taskbar notification area (bottom-right tray near the clock). Right-click the tray icon to quickly Pause/Resume, Show/Hide the Mini Window, or Open the main CTR window.
+- **Always-On-Top Over Full Windows Apps**: The mini timer floats over any application (VS Code, Visual Studio, Chrome, Discord, Slack, Windows Terminal, Games in borderless mode).
+- **Multi-Monitor & High-DPI Support**: Automatically scales on high-resolution displays (1080p, 1440p, 4K) and moves smoothly across multi-monitor setups.
+- **Native Windows Hotkeys & Minimize-to-Tray**: Minimizing or closing the main CTR window keeps your Pomodoro countdown running silently in the background.
+
+#### 🚀 1-Minute Windows Setup via PowerShell:
+Open **PowerShell** as Administrator and run:
+
+```powershell
+# 1. Install Node.js, Git, and Rust via winget
+winget install OpenJS.NodeJS -e
+winget install Git.Git -e
+winget install Rustlang.Rustup -e
+
+# 2. Install Visual Studio C++ Build Tools (if not already installed)
+winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--passive --wait --add Microsoft.VisualStudio.Workload.VCTools;includeRecommended"
+
+# 3. Reload your environment and clone CTR
+refreshenv # or restart PowerShell
+git clone https://github.com/fahimirfanc123/CUSTOM-TIMER.git
+cd CUSTOM-TIMER
+
+# 4. Install dependencies and launch Windows Desktop App
+npm install
+npm run tauri:dev
+```
+
+#### 📦 Building a Native Windows Installer (`.msi` / `.exe`):
+To generate a standalone Windows installer you can share or install permanently:
+```powershell
+npm run tauri:build
+```
+The installer will be generated in:
+`src-tauri\target\release\bundle\msi\CTR - Custom Training Timer_x64_en-US.msi` and `nsis\*.exe`.
+
+---
+
+### Option B: Windows Browser & PWA (Progressive Web App)
+
+If you do not want to install Rust and build tools, you can run CTR directly in your favorite Windows web browser (**Microsoft Edge**, **Google Chrome**, **Brave**, **Firefox**):
+
+1. **Run Locally**:
+   ```powershell
+   npm install
+   npm run dev
+   ```
+2. **Open in Microsoft Edge or Google Chrome**: Navigate to `http://localhost:5173`.
+3. **Install as a Windows App (PWA)**:
+   - In **Microsoft Edge**: Click the `App available` icon in the address bar (or menu `...` $\rightarrow$ `Apps` $\rightarrow$ `Install CTR`).
+   - In **Google Chrome**: Click the install icon in the address bar $\rightarrow$ `Install CTR`.
+4. CTR will now have its own dedicated Windows taskbar icon, standalone window, and desktop shortcut!
+
+---
+
 ## ⌨️ Keyboard Shortcuts
 
-### Workout Player (Desktop)
+### Workout Player (Desktop & Web)
 | Key | Action |
 | :--- | :--- |
 | `Space` | **Pause / Resume** active workout |
@@ -173,6 +238,14 @@ CTR/
 To build and run native desktop packages, install the required OS dependencies:
 
 <details>
+<summary><b>🪟 Windows (10 / 11)</b></summary>
+
+1. Install **Microsoft Visual Studio C++ Build Tools** via the [Visual Studio Installer](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (check *"Desktop development with C++"*).
+2. Install **WebView2** (pre-installed on Windows 10 & 11).
+3. Install **Rust** via [rustup-init.exe](https://www.rust-lang.org/tools/install) or `winget install Rustlang.Rustup`.
+</details>
+
+<details>
 <summary><b>🐧 Ubuntu / Debian Linux</b></summary>
 
 ```bash
@@ -197,14 +270,6 @@ source "$HOME/.cargo/env"
 </details>
 
 <details>
-<summary><b>🪟 Windows</b></summary>
-
-1. Install the **Microsoft C++ Build Tools** via the [Visual Studio Installer](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (select "Desktop development with C++").
-2. Install [WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) (pre-installed on Windows 10/11).
-3. Install Rust via [rustup-init.exe](https://www.rust-lang.org/tools/install).
-</details>
-
-<details>
 <summary><b>🍎 macOS</b></summary>
 
 ```bash
@@ -223,7 +288,7 @@ source "$HOME/.cargo/env"
 
 ```bash
 # Clone the repository
-git clone git@github.com:fahimirfanc123/CUSTOM-TIMER.git
+git clone https://github.com/fahimirfanc123/CUSTOM-TIMER.git
 cd CUSTOM-TIMER
 
 # Install NPM packages
@@ -281,8 +346,8 @@ The compiled, minified bundle will be generated in `dist/`.
 npm run tauri:build
 ```
 This builds standalone native binaries and installers in `src-tauri/target/release/bundle/`:
+- **Windows**: `.msi` and `.exe` (NSIS) installers
 - **Linux**: `.deb` package and standalone `.AppImage`
-- **Windows**: `.msi` and `.exe` installers
 - **macOS**: `.dmg` disk image and `.app` bundle
 
 ---
@@ -312,7 +377,7 @@ This builds standalone native binaries and installers in `src-tauri/target/relea
 
 ### 🍅 Step 4: Using the Pomodoro Focus Timer
 1. Click **"Focus"** in the top navigation bar.
-2. Set your task label (e.g., *"Coding Desktop Module"*).
+2. Set your task label (e.g., *"Coding Windows Module"*).
 3. Select a preset (**Classic 25/5**, **Short 15/3**, **Deep 50/10**, or **Custom** via Settings ⚙️).
 4. Click **"Start Focus"** to begin countdown.
 5. **Minimize Focus**:
