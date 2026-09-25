@@ -12,6 +12,7 @@ import {
   focusPresets,
 } from './types';
 import { FocusAudioCoordinator, IFocusSoundEngine, IFocusSpeechEngine } from './focusAudio';
+import { IFocusDesktopBridge, defaultDesktopBridge } from './desktopBridge';
 
 export const FOCUS_STATE_STORAGE_KEY = 'ctr_focus_state';
 export const FOCUS_CONFIG_STORAGE_KEY = 'ctr_focus_config';
@@ -22,6 +23,7 @@ export interface FocusTimerControllerOptions {
   scheduler?: Scheduler;
   soundEngine?: IFocusSoundEngine;
   speechEngine?: IFocusSpeechEngine;
+  desktopBridge?: IFocusDesktopBridge;
   initialConfig?: Partial<FocusConfig>;
   storage?: Storage;
   autoRestore?: boolean;
@@ -31,6 +33,8 @@ export class FocusTimerController {
   private clock: Clock;
   private scheduler: Scheduler;
   private audioCoordinator: FocusAudioCoordinator;
+  private desktopBridge: IFocusDesktopBridge | null = null;
+  private unlistenBridgeCommand: (() => void) | null = null;
   private storage: Storage | null = null;
 
   private phase: FocusPhase = 'IDLE';
@@ -82,6 +86,54 @@ export class FocusTimerController {
     // 4. Auto restore if enabled (default true when storage is present)
     if (options?.autoRestore !== false) {
       this.restorePersistedState();
+    }
+
+    // 5. Initialize Desktop Bridge
+    this.desktopBridge = options?.desktopBridge ?? defaultDesktopBridge;
+    if (this.desktopBridge) {
+      this.unlistenBridgeCommand = this.desktopBridge.onFocusCommand((cmd) => {
+        switch (cmd.action) {
+          case 'PAUSE':
+            this.pause();
+            break;
+          case 'RESUME':
+            this.resume();
+            break;
+          case 'TOGGLE_PAUSE':
+            if (this.status === 'RUNNING') {
+              this.pause();
+            } else if (this.status === 'PAUSED') {
+              this.resume();
+            } else if (this.status === 'IDLE' || this.status === 'AWAITING_NEXT_PHASE') {
+              this.start();
+            }
+            break;
+          case 'SKIP':
+            this.skip();
+            break;
+          case 'RESET':
+            this.reset();
+            break;
+          case 'START_FOCUS':
+            this.startFocus();
+            break;
+          case 'START_BREAK':
+            this.startBreak(cmd.forceLongBreak);
+            break;
+          case 'EXPAND':
+            this.expand();
+            break;
+          case 'HIDE_MINI':
+            this.desktopBridge?.hideMiniWindow();
+            break;
+          case 'SET_ALWAYS_ON_TOP':
+            this.desktopBridge?.setAlwaysOnTop(cmd.value).catch(() => {});
+            break;
+          case 'REQUEST_SYNC':
+            this.desktopBridge?.syncSnapshot(this.getSnapshot()).catch(() => {});
+            break;
+        }
+      });
     }
   }
 
@@ -137,6 +189,7 @@ export class FocusTimerController {
       listener(event);
     }
     this.persistState();
+    this.desktopBridge?.syncSnapshot(snapshot).catch(() => {});
   }
 
   // --- Daily Stats Helper ---
@@ -361,11 +414,14 @@ export class FocusTimerController {
 
   public minimize(): void {
     this.isMinimized = true;
+    this.desktopBridge?.openMiniWindow(this.getSnapshot()).catch(() => {});
     this.emit('MINIMIZE');
   }
 
   public expand(): void {
     this.isMinimized = false;
+    this.desktopBridge?.closeMiniWindow().catch(() => {});
+    this.desktopBridge?.restoreMainWindow().catch(() => {});
     this.emit('EXPAND');
   }
 
@@ -657,5 +713,9 @@ export class FocusTimerController {
     this.scheduler.stop();
     this.listeners.clear();
     this.audioCoordinator.dispose();
+    if (this.unlistenBridgeCommand) {
+      this.unlistenBridgeCommand();
+      this.unlistenBridgeCommand = null;
+    }
   }
 }

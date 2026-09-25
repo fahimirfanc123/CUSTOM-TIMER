@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, ReactNode } from 'react';
 import { ThemeContext, ThemeMode, ResolvedTheme } from './ThemeContext';
+import { defaultDesktopBridge } from '../../core/focus/desktopBridge';
 
 export const THEME_STORAGE_KEY = 'ctr-theme';
 
@@ -58,7 +59,7 @@ export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps) {
     }
   }, []);
 
-  // Apply class and data attribute to document element
+  // Apply class and data attribute to document element and sync across desktop windows
   useEffect(() => {
     if (typeof document === 'undefined') return;
     const root = document.documentElement;
@@ -67,6 +68,8 @@ export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps) {
     root.classList.add(resolvedTheme);
     root.setAttribute('data-theme', resolvedTheme);
     root.style.colorScheme = resolvedTheme;
+
+    defaultDesktopBridge.syncTheme(resolvedTheme);
   }, [resolvedTheme]);
 
   const setTheme = useCallback((newTheme: ThemeMode) => {

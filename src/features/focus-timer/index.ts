@@ -5,3 +5,5 @@ export * from './ResetConfirmDialog';
 export * from './WorkoutConflictDialog';
 export * from './FloatingPomodoro';
 export * from './FocusScreen';
+export * from './PomodoroMiniWindow';
+export * from './MiniWindowContainer';
