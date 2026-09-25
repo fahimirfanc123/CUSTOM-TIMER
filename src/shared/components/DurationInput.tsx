@@ -53,17 +53,17 @@ export function DurationInput({
   return (
     <div className={`space-y-1.5 ${className}`}>
       <div className="flex items-center justify-between">
-        <label htmlFor={inputId} className="text-xs sm:text-sm font-bold text-zinc-300 uppercase tracking-wider">
+        <label htmlFor={inputId} className="text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
           {label}
         </label>
-        <span className="text-xs font-mono font-bold text-zinc-400 tabular-nums">
+        <span className="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400 tabular-nums">
           {minutes > 0 ? `${minutes}m ` : ''}{seconds}s ({valueSec}s)
         </span>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
         {/* Exact Minutes & Seconds Inputs */}
-        <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 rounded-xl px-2.5 py-1.5 focus-within:border-zinc-500 transition-colors">
+        <div className="flex items-center gap-1.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-1.5 focus-within:border-zinc-400 dark:focus-within:border-zinc-500 transition-colors">
           <div className="flex items-center gap-1">
             <input
               id={inputId}
@@ -73,12 +73,12 @@ export function DurationInput({
               value={minutes}
               onChange={handleMinutesChange}
               aria-label={`${label} minutes`}
-              className="w-10 sm:w-12 bg-transparent text-center font-mono font-bold text-base sm:text-lg text-white tabular-nums outline-none focus:text-white"
+              className="w-10 sm:w-12 bg-transparent text-center font-mono font-bold text-base sm:text-lg text-zinc-900 dark:text-white tabular-nums outline-none focus:text-zinc-900 dark:focus:text-white"
             />
-            <span className="text-xs text-zinc-500 font-semibold">m</span>
+            <span className="text-xs text-zinc-400 dark:text-zinc-500 font-semibold">m</span>
           </div>
 
-          <span className="text-zinc-600 font-bold">:</span>
+          <span className="text-zinc-400 dark:text-zinc-600 font-bold">:</span>
 
           <div className="flex items-center gap-1">
             <input
@@ -88,9 +88,9 @@ export function DurationInput({
               value={seconds}
               onChange={handleSecondsChange}
               aria-label={`${label} seconds`}
-              className="w-10 sm:w-12 bg-transparent text-center font-mono font-bold text-base sm:text-lg text-white tabular-nums outline-none focus:text-white"
+              className="w-10 sm:w-12 bg-transparent text-center font-mono font-bold text-base sm:text-lg text-zinc-900 dark:text-white tabular-nums outline-none focus:text-zinc-900 dark:focus:text-white"
             />
-            <span className="text-xs text-zinc-500 font-semibold">s</span>
+            <span className="text-xs text-zinc-400 dark:text-zinc-500 font-semibold">s</span>
           </div>
         </div>
 
@@ -106,7 +106,7 @@ export function DurationInput({
                 onClick={() => handleQuickAdjust(delta)}
                 disabled={wouldBeInvalid}
                 aria-label={`${isNegative ? 'Subtract' : 'Add'} ${Math.abs(delta)} seconds to ${label}`}
-                className="px-2 py-1.5 rounded-lg text-xs font-mono font-bold bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 hover:text-white active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+                className="px-2 py-1.5 rounded-lg text-xs font-mono font-bold bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
               >
                 {delta > 0 ? `+${delta}` : delta}
               </button>
@@ -116,7 +116,7 @@ export function DurationInput({
       </div>
 
       {error && (
-        <p className="text-xs text-rose-400 font-medium" role="alert">
+        <p className="text-xs text-rose-500 dark:text-rose-400 font-medium" role="alert">
           {error}
         </p>
       )}

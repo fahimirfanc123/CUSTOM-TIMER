@@ -34,26 +34,26 @@ export function WorkoutPreviewModal({
     switch (phase) {
       case 'PREPARE':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30">
             <Bell className="w-3 h-3" /> Prepare
           </span>
         );
       case 'WORK':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
             <Flame className="w-3 h-3" /> Work
           </span>
         );
       case 'REST_SET':
       case 'REST_EXERCISE':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-sky-500/10 text-sky-400 border border-sky-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/30">
             <Moon className="w-3 h-3" /> Rest
           </span>
         );
       case 'REST_ROUND':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-500/10 text-indigo-400 border border-indigo-500/30">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30">
             <Moon className="w-3 h-3" /> Round Rest
           </span>
         );
@@ -67,16 +67,16 @@ export function WorkoutPreviewModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="preview-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 dark:bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
     >
-      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden transition-colors">
         {/* Modal Header */}
-        <div className="p-4 sm:p-6 border-b border-zinc-800 flex items-center justify-between shrink-0 bg-zinc-900/90">
+        <div className="p-4 sm:p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between shrink-0 bg-white/90 dark:bg-zinc-900/90">
           <div>
-            <h2 id="preview-title" className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">
+            <h2 id="preview-title" className="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white uppercase tracking-tight">
               Workout Preview
             </h2>
-            <p className="text-xs sm:text-sm font-semibold text-zinc-400">
+            <p className="text-xs sm:text-sm font-semibold text-zinc-500 dark:text-zinc-400">
               {workout.title || 'Untitled Workout'} — {segments.length} segments
             </p>
           </div>
@@ -85,7 +85,7 @@ export function WorkoutPreviewModal({
             type="button"
             onClick={onClose}
             aria-label="Close preview"
-            className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -94,20 +94,20 @@ export function WorkoutPreviewModal({
         {/* Estimated Duration Header Banner */}
         {!error && (
           <div className="bg-emerald-500/10 border-b border-emerald-500/20 px-6 py-3 flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
               <Clock className="w-4 h-4" />
               Estimated Duration
             </div>
-            <div className="font-mono font-black text-emerald-400 text-sm sm:text-base">
+            <div className="font-mono font-black text-emerald-600 dark:text-emerald-400 text-sm sm:text-base">
               {formatEstimatedDuration(totalDurationSec)} ({formatDigitalTime(totalDurationSec)})
             </div>
           </div>
         )}
 
         {/* Scrollable Segments List */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-2.5 divide-y divide-zinc-800/40">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-2.5 divide-y divide-zinc-100 dark:divide-zinc-800/40">
           {error ? (
-            <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm font-semibold text-center">
+            <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-sm font-semibold text-center">
               {error}
             </div>
           ) : (
@@ -116,41 +116,41 @@ export function WorkoutPreviewModal({
               return (
                 <div key={idx} className="pt-2.5 first:pt-0">
                   {isFirstOfRound && (
-                    <div className="text-[11px] font-black uppercase tracking-widest text-zinc-500 py-1 flex items-center gap-2">
+                    <div className="text-[11px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500 py-1 flex items-center gap-2">
                       <span>ROUND {seg.context.round} OF {seg.context.totalRounds}</span>
-                      <div className="flex-1 h-px bg-zinc-800" />
+                      <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl hover:bg-zinc-800/40 transition-colors">
+                  <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/40 transition-colors">
                     <div className="flex items-center gap-3 min-w-0">
-                      <span className="font-mono text-xs font-bold text-zinc-500 w-6 text-right shrink-0">
+                      <span className="font-mono text-xs font-bold text-zinc-400 dark:text-zinc-500 w-6 text-right shrink-0">
                         {idx + 1}
                       </span>
 
                       {getPhaseBadge(seg.phase)}
 
                       <div className="min-w-0">
-                        <div className="text-sm font-bold text-zinc-100 truncate">
+                        <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100 truncate">
                           {seg.phase === 'PREPARE'
                             ? 'Get Ready'
                             : seg.context.exerciseName ?? 'Rest'}
                         </div>
                         {seg.phase === 'WORK' && (
-                          <div className="text-[11px] font-semibold text-zinc-400">
+                          <div className="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">
                             Set {seg.context.set} / {seg.context.totalSets}
                             {seg.context.reps && ` • ${seg.context.reps} reps`}
                           </div>
                         )}
                         {seg.phase.startsWith('REST') && seg.context.nextTarget && (
-                          <div className="text-[11px] font-semibold text-zinc-500 truncate">
+                          <div className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 truncate">
                             Next: {seg.context.nextTarget.exerciseName} (Set {seg.context.nextTarget.setNumber})
                           </div>
                         )}
                       </div>
                     </div>
 
-                    <div className="font-mono font-bold text-xs sm:text-sm text-zinc-300 tabular-nums shrink-0">
+                    <div className="font-mono font-bold text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 tabular-nums shrink-0">
                       {formatDigitalTime(seg.durationSec)}
                     </div>
                   </div>
@@ -161,11 +161,11 @@ export function WorkoutPreviewModal({
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 sm:p-6 border-t border-zinc-800 bg-zinc-900/90 flex items-center justify-end gap-3 shrink-0">
+        <div className="p-4 sm:p-6 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/90 dark:bg-zinc-900/90 flex items-center justify-end gap-3 shrink-0">
           <button
             type="button"
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
           >
             Close
           </button>

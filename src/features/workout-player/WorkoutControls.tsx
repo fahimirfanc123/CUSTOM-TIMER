@@ -32,7 +32,7 @@ export function WorkoutControls({
           type="button"
           onClick={onPrevious}
           aria-label="Previous segment"
-          className="h-16 rounded-2xl bg-zinc-900 border border-zinc-800/80 hover:bg-zinc-800 active:bg-zinc-700 text-zinc-300 hover:text-white flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer"
+          className="h-16 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 active:bg-zinc-200 dark:active:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
           <StepBack className="w-6 h-6" />
           <span className="text-[11px] font-bold tracking-wider uppercase">Previous</span>
@@ -45,7 +45,7 @@ export function WorkoutControls({
           className={`h-20 rounded-3xl font-black flex flex-col items-center justify-center gap-1 shadow-xl transition-all active:scale-95 cursor-pointer ${
             isPaused
               ? 'bg-emerald-500 hover:bg-emerald-400 text-zinc-950 shadow-emerald-950/40 ring-2 ring-emerald-400/50'
-              : 'bg-white hover:bg-zinc-200 text-zinc-950 shadow-zinc-950/40'
+              : 'bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-zinc-950 shadow-zinc-950/20'
           }`}
         >
           {isPaused ? (
@@ -65,7 +65,7 @@ export function WorkoutControls({
           type="button"
           onClick={onNext}
           aria-label="Skip to next segment"
-          className="h-16 rounded-2xl bg-zinc-900 border border-zinc-800/80 hover:bg-zinc-800 active:bg-zinc-700 text-zinc-300 hover:text-white flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer"
+          className="h-16 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 active:bg-zinc-200 dark:active:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
           <StepForward className="w-6 h-6" />
           <span className="text-[11px] font-bold tracking-wider uppercase">Skip</span>
@@ -78,7 +78,7 @@ export function WorkoutControls({
           type="button"
           onClick={() => onAddTime(-10)}
           aria-label="Subtract 10 seconds"
-          className="py-2.5 px-2 rounded-xl bg-zinc-900/60 border border-zinc-800/80 hover:bg-zinc-800 text-zinc-300 hover:text-white font-mono font-bold text-sm transition-colors active:scale-95 cursor-pointer"
+          className="py-2.5 px-2 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white font-mono font-bold text-sm transition-colors active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
           -10s
         </button>
@@ -86,7 +86,7 @@ export function WorkoutControls({
           type="button"
           onClick={() => onAddTime(10)}
           aria-label="Add 10 seconds"
-          className="py-2.5 px-2 rounded-xl bg-zinc-900/60 border border-zinc-800/80 hover:bg-zinc-800 text-zinc-300 hover:text-white font-mono font-bold text-sm transition-colors active:scale-95 cursor-pointer"
+          className="py-2.5 px-2 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white font-mono font-bold text-sm transition-colors active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
           +10s
         </button>
@@ -94,7 +94,7 @@ export function WorkoutControls({
           type="button"
           onClick={() => onAddTime(30)}
           aria-label="Add 30 seconds"
-          className="py-2.5 px-2 rounded-xl bg-zinc-900/60 border border-zinc-800/80 hover:bg-zinc-800 text-zinc-300 hover:text-white font-mono font-bold text-sm transition-colors active:scale-95 cursor-pointer"
+          className="py-2.5 px-2 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white font-mono font-bold text-sm transition-colors active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
           +30s
         </button>
@@ -106,9 +106,9 @@ export function WorkoutControls({
           type="button"
           onClick={onRestartSegment}
           aria-label="Restart current segment"
-          className="py-3 px-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors active:scale-95 cursor-pointer"
+          className="py-3 px-3 rounded-xl bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
-          <RotateCcw className="w-4 h-4 text-zinc-400" />
+          <RotateCcw className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
           <span>Restart Set</span>
         </button>
 
@@ -116,9 +116,9 @@ export function WorkoutControls({
           type="button"
           onClick={onRequestEnd}
           aria-label="End workout"
-          className="py-3 px-3 rounded-xl bg-zinc-900/80 border border-rose-950/60 hover:bg-rose-950/40 text-rose-300 hover:text-rose-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors active:scale-95 cursor-pointer"
+          className="py-3 px-3 rounded-xl bg-rose-50 dark:bg-zinc-900/80 border border-rose-200 dark:border-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-300 hover:text-rose-700 dark:hover:text-rose-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors active:scale-95 cursor-pointer shadow-sm dark:shadow-none"
         >
-          <Square className="w-4 h-4 text-rose-400 fill-current" />
+          <Square className="w-4 h-4 text-rose-500 dark:text-rose-400 fill-current" />
           <span>End Workout</span>
         </button>
       </div>

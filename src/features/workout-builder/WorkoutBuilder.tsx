@@ -146,7 +146,6 @@ export function WorkoutBuilder({
     }
 
     try {
-      // Auto-save when starting if desired or save first
       if (editingSavedId || isDirty) {
         await handleSave();
       }
@@ -154,7 +153,6 @@ export function WorkoutBuilder({
         onStart(workout);
       }
     } catch {
-      // If save fails, still allow starting if workout is valid
       if (onStart) {
         onStart(workout);
       }
@@ -164,24 +162,24 @@ export function WorkoutBuilder({
   const isTitleEmpty = workout.title.trim() === '';
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white pb-24 md:pb-12">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-zinc-900 dark:text-white pb-24 md:pb-12 transition-colors duration-200">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-30 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800/80 px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-30 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200 dark:border-zinc-800/80 px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={handleBack}
             aria-label="Back to home"
-            className="p-2 -ml-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+            className="p-2 -ml-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div>
-            <h1 className="text-base sm:text-lg font-black uppercase tracking-tight text-white flex items-center gap-2">
-              <Dumbbell className="w-4 h-4 text-emerald-400" />
+            <h1 className="text-base sm:text-lg font-black uppercase tracking-tight text-zinc-900 dark:text-white flex items-center gap-2">
+              <Dumbbell className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
               {editingSavedId ? 'Edit Workout' : 'Create Workout'}
             </h1>
-            <p className="text-[11px] text-zinc-400 font-medium hidden sm:block">
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium hidden sm:block">
               {isDirty ? 'Draft modified' : 'All changes saved'}
             </p>
           </div>
@@ -193,7 +191,7 @@ export function WorkoutBuilder({
             type="button"
             onClick={handlePreview}
             aria-label="Preview workout"
-            className="px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-sm dark:shadow-none"
           >
             <Eye className="w-4 h-4" />
             <span className="hidden sm:inline">Preview</span>
@@ -214,7 +212,7 @@ export function WorkoutBuilder({
               type="button"
               onClick={handleStart}
               aria-label="Start workout"
-              className="hidden sm:flex px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-black text-xs uppercase tracking-wider items-center gap-1.5 transition-all shadow-lg cursor-pointer"
+              className="hidden sm:flex px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-black text-xs uppercase tracking-wider items-center gap-1.5 transition-all shadow-lg cursor-pointer"
             >
               <Play className="w-4 h-4 fill-current" />
               <span>Start</span>
@@ -229,7 +227,7 @@ export function WorkoutBuilder({
         {saveSuccessMessage && (
           <div
             role="status"
-            className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-2"
+            className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-sm font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-2"
           >
             <Check className="w-4 h-4 shrink-0" />
             <span>{saveSuccessMessage}</span>
@@ -240,11 +238,11 @@ export function WorkoutBuilder({
         {validationError && (
           <div
             role="alert"
-            className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm font-semibold flex items-start gap-3 animate-in fade-in"
+            className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-sm font-semibold flex items-start gap-3 animate-in fade-in"
           >
-            <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-rose-500 dark:text-rose-400 shrink-0 mt-0.5" />
             <div className="flex-1">
-              <span className="font-bold uppercase tracking-wide text-xs block text-rose-400 mb-0.5">
+              <span className="font-bold uppercase tracking-wide text-xs block text-rose-600 dark:text-rose-400 mb-0.5">
                 Validation Error
               </span>
               <span>{validationError}</span>
@@ -258,17 +256,17 @@ export function WorkoutBuilder({
         {/* Workout Info & Settings Card */}
         <section
           aria-label="Workout settings"
-          className="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-5 sm:p-7 space-y-6 shadow-xl shadow-black/20"
+          className="bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-5 sm:p-7 space-y-6 shadow-sm dark:shadow-xl dark:shadow-black/20"
         >
           <div className="space-y-4">
             {/* Title */}
             <div className="space-y-1.5">
               <label
                 htmlFor="workout-title"
-                className="text-xs font-black uppercase tracking-wider text-zinc-400 flex items-center justify-between"
+                className="text-xs font-black uppercase tracking-wider text-zinc-500 dark:text-zinc-400 flex items-center justify-between"
               >
                 <span>Workout Title</span>
-                <span className="text-[10px] text-rose-400 font-bold uppercase">Required</span>
+                <span className="text-[10px] text-rose-500 dark:text-rose-400 font-bold uppercase">Required</span>
               </label>
               <input
                 id="workout-title"
@@ -278,14 +276,14 @@ export function WorkoutBuilder({
                 placeholder="e.g. Full Body HIIT & Core"
                 aria-required="true"
                 aria-invalid={isTitleEmpty}
-                className={`w-full bg-zinc-950/60 border rounded-2xl px-4 py-3 text-lg sm:text-xl font-black text-white placeholder:text-zinc-600 outline-none transition-colors ${
+                className={`w-full bg-zinc-50 dark:bg-zinc-950/60 border rounded-2xl px-4 py-3 text-lg sm:text-xl font-black text-zinc-900 dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none transition-colors ${
                   isTitleEmpty && validationError
                     ? 'border-rose-500 focus:border-rose-400'
-                    : 'border-zinc-800 focus:border-emerald-500'
+                    : 'border-zinc-200 dark:border-zinc-800 focus:border-emerald-500'
                 }`}
               />
               {isTitleEmpty && validationError && (
-                <p className="text-xs text-rose-400 font-medium">Workout title is required</p>
+                <p className="text-xs text-rose-500 dark:text-rose-400 font-medium">Workout title is required</p>
               )}
             </div>
 
@@ -293,9 +291,9 @@ export function WorkoutBuilder({
             <div className="space-y-1.5">
               <label
                 htmlFor="workout-desc"
-                className="text-xs font-bold uppercase tracking-wider text-zinc-400 block"
+                className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block"
               >
-                Description <span className="text-zinc-500 lowercase">(optional)</span>
+                Description <span className="text-zinc-400 dark:text-zinc-500 lowercase">(optional)</span>
               </label>
               <textarea
                 id="workout-desc"
@@ -303,13 +301,13 @@ export function WorkoutBuilder({
                 onChange={handleDescriptionChange}
                 placeholder="Add instructions, target muscle groups, or notes..."
                 rows={2}
-                className="w-full bg-zinc-950/60 border border-zinc-800 rounded-2xl px-4 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-600 outline-none focus:border-emerald-500 transition-colors resize-none"
+                className="w-full bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 rounded-2xl px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-emerald-500 transition-colors resize-none"
               />
             </div>
           </div>
 
           {/* Global Timers & Rounds Settings */}
-          <div className="pt-4 border-t border-zinc-800/80 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 grid grid-cols-1 md:grid-cols-3 gap-5">
             {/* Prepare Countdown */}
             <DurationInput
               valueSec={workout.prepareDurationSec}
@@ -322,7 +320,7 @@ export function WorkoutBuilder({
 
             {/* Total Rounds */}
             <div className="space-y-1.5">
-              <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">
+              <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block">
                 Total Rounds
               </span>
               <Stepper
@@ -349,14 +347,14 @@ export function WorkoutBuilder({
         {/* Exercises Section */}
         <section aria-label="Exercises list" className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-base sm:text-lg font-black uppercase tracking-tight text-white">
+            <h2 className="text-base sm:text-lg font-black uppercase tracking-tight text-zinc-900 dark:text-white">
               Exercises ({workout.exercises.length})
             </h2>
             <button
               type="button"
               onClick={() => dispatch({ type: 'ADD_EXERCISE' })}
               aria-label="Add new exercise"
-              className="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 text-emerald-400 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-3.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Add Exercise</span>
@@ -364,10 +362,10 @@ export function WorkoutBuilder({
           </div>
 
           {workout.exercises.length === 0 ? (
-            <div className="bg-zinc-900/40 border border-dashed border-zinc-800 rounded-3xl p-8 text-center space-y-3">
-              <Dumbbell className="w-10 h-10 text-zinc-600 mx-auto" />
+            <div className="bg-white dark:bg-zinc-900/40 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 text-center space-y-3 shadow-sm dark:shadow-none">
+              <Dumbbell className="w-10 h-10 text-zinc-400 dark:text-zinc-600 mx-auto" />
               <div className="space-y-1">
-                <p className="text-sm font-bold text-zinc-300">No exercises added yet</p>
+                <p className="text-sm font-bold text-zinc-700 dark:text-zinc-300">No exercises added yet</p>
                 <p className="text-xs text-zinc-500">
                   Add at least one exercise to complete this workout.
                 </p>
@@ -409,7 +407,7 @@ export function WorkoutBuilder({
               type="button"
               onClick={() => dispatch({ type: 'ADD_EXERCISE' })}
               aria-label="Add exercise at bottom"
-              className="w-full py-4 rounded-2xl border-2 border-dashed border-zinc-800 hover:border-zinc-700 bg-zinc-900/30 hover:bg-zinc-900/60 text-zinc-400 hover:text-zinc-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full py-4 rounded-2xl border-2 border-dashed border-zinc-300 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-700 bg-white/60 dark:bg-zinc-900/30 hover:bg-white dark:hover:bg-zinc-900/60 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4" /> Add Another Exercise
             </button>
@@ -418,12 +416,12 @@ export function WorkoutBuilder({
       </main>
 
       {/* Mobile Sticky Bottom Bar */}
-      <div className="sm:hidden fixed bottom-0 inset-x-0 bg-zinc-950/90 backdrop-blur-lg border-t border-zinc-800/80 p-3 flex items-center gap-2 z-30">
+      <div className="sm:hidden fixed bottom-0 inset-x-0 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-lg border-t border-zinc-200 dark:border-zinc-800/80 p-3 flex items-center gap-2 z-30">
         <button
           type="button"
           onClick={handlePreview}
           aria-label="Preview (mobile)"
-          className="flex-1 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5"
+          className="flex-1 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5"
         >
           <Eye className="w-4 h-4" />
           <span>Preview</span>
@@ -444,7 +442,7 @@ export function WorkoutBuilder({
             type="button"
             onClick={handleStart}
             aria-label="Start (mobile)"
-            className="flex-1 py-3 rounded-xl bg-white text-zinc-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg"
+            className="flex-1 py-3 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg"
           >
             <Play className="w-4 h-4 fill-current" />
             <span>Start</span>

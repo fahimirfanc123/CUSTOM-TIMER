@@ -97,43 +97,43 @@ export function ActiveWorkout({
         return {
           title: 'GET READY',
           subtitle: 'Prepare for first set',
-          badgeClass: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
-          timerClass: 'text-amber-400',
+          badgeClass: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30',
+          timerClass: 'text-amber-500 dark:text-amber-400',
         };
       case 'WORK':
         return {
           title: 'WORK',
           subtitle: context?.exerciseName ?? 'Work',
-          badgeClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-          timerClass: 'text-emerald-400',
+          badgeClass: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
+          timerClass: 'text-emerald-600 dark:text-emerald-400',
         };
       case 'REST_SET':
         return {
           title: 'REST',
           subtitle: 'Between Sets',
-          badgeClass: 'bg-sky-500/10 text-sky-400 border-sky-500/30',
-          timerClass: 'text-sky-400',
+          badgeClass: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/30',
+          timerClass: 'text-sky-600 dark:text-sky-400',
         };
       case 'REST_EXERCISE':
         return {
           title: 'REST',
           subtitle: 'Next Exercise',
-          badgeClass: 'bg-sky-500/10 text-sky-400 border-sky-500/30',
-          timerClass: 'text-sky-400',
+          badgeClass: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/30',
+          timerClass: 'text-sky-600 dark:text-sky-400',
         };
       case 'REST_ROUND':
         return {
           title: 'REST',
           subtitle: 'Between Rounds',
-          badgeClass: 'bg-sky-500/10 text-sky-400 border-sky-500/30',
-          timerClass: 'text-sky-400',
+          badgeClass: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/30',
+          timerClass: 'text-sky-600 dark:text-sky-400',
         };
       default:
         return {
           title: 'WORK',
           subtitle: 'Active',
-          badgeClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-          timerClass: 'text-emerald-400',
+          badgeClass: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
+          timerClass: 'text-emerald-600 dark:text-emerald-400',
         };
     }
   };
@@ -166,7 +166,7 @@ export function ActiveWorkout({
     <div
       role="region"
       aria-label="Active workout"
-      className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col justify-between max-w-xl mx-auto p-4 sm:p-6 select-none"
+      className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col justify-between max-w-xl mx-auto p-4 sm:p-6 select-none transition-colors duration-200"
     >
       {/* Top Header Bar */}
       <header className="flex items-center justify-between gap-2 pb-2">
@@ -174,14 +174,14 @@ export function ActiveWorkout({
           type="button"
           onClick={() => setShowEndDialog(true)}
           aria-label="Exit workout"
-          className="p-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider cursor-pointer"
+          className="p-2.5 rounded-xl bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm dark:shadow-none"
         >
           <X className="w-4 h-4" />
           <span className="hidden xs:inline">End</span>
         </button>
 
         <div className="text-center px-2">
-          <div className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest truncate max-w-[180px] sm:max-w-[240px]">
+          <div className="text-[11px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest truncate max-w-[180px] sm:max-w-[240px]">
             {workout?.title ?? 'CTR Timer'}
           </div>
         </div>
@@ -195,8 +195,8 @@ export function ActiveWorkout({
             title={audioSettings.voiceEnabled ? 'Voice Coach: ON' : 'Voice Coach: OFF'}
             className={`p-2.5 rounded-xl border transition-colors cursor-pointer ${
               audioSettings.voiceEnabled
-                ? 'bg-zinc-900 border-zinc-700 text-emerald-400 hover:bg-zinc-800'
-                : 'bg-zinc-900/40 border-zinc-800/60 text-zinc-600 hover:text-zinc-400'
+                ? 'bg-emerald-50 dark:bg-zinc-900 border-emerald-300 dark:border-zinc-700 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-zinc-800'
+                : 'bg-zinc-100 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800/60 text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-400'
             }`}
           >
             {audioSettings.voiceEnabled ? (
@@ -213,8 +213,8 @@ export function ActiveWorkout({
             title={audioSettings.soundEnabled ? 'Sound Effects: ON' : 'Sound Effects: OFF'}
             className={`p-2.5 rounded-xl border transition-colors cursor-pointer ${
               audioSettings.soundEnabled
-                ? 'bg-zinc-900 border-zinc-700 text-emerald-400 hover:bg-zinc-800'
-                : 'bg-zinc-900/40 border-zinc-800/60 text-zinc-600 hover:text-zinc-400'
+                ? 'bg-emerald-50 dark:bg-zinc-900 border-emerald-300 dark:border-zinc-700 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-zinc-800'
+                : 'bg-zinc-100 dark:bg-zinc-900/40 border-zinc-200 dark:border-zinc-800/60 text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-400'
             }`}
           >
             {audioSettings.soundEnabled ? (
@@ -231,7 +231,7 @@ export function ActiveWorkout({
         {/* Status / Phase Badges */}
         <div className="flex flex-wrap items-center justify-center gap-2">
           {isPaused ? (
-            <div className="px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-black tracking-widest uppercase flex items-center gap-2 animate-pulse">
+            <div className="px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-black tracking-widest uppercase flex items-center gap-2 animate-pulse">
               <PauseIcon className="w-4 h-4 fill-current" />
               PAUSED
             </div>
@@ -239,10 +239,10 @@ export function ActiveWorkout({
             <div
               className={`px-4 py-1.5 rounded-full border text-xs sm:text-sm font-black tracking-widest uppercase flex items-center gap-2 ${phaseConfig.badgeClass}`}
             >
-              {phase === 'WORK' && <Flame className="w-4 h-4 fill-current text-emerald-400" />}
+              {phase === 'WORK' && <Flame className="w-4 h-4 fill-current text-emerald-600 dark:text-emerald-400" />}
               {phaseConfig.title}
               {phaseConfig.subtitle && phaseConfig.title !== phaseConfig.subtitle && (
-                <span className="text-[10px] font-bold text-zinc-400 opacity-90">
+                <span className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 opacity-90">
                   • {phaseConfig.subtitle}
                 </span>
               )}
@@ -250,12 +250,12 @@ export function ActiveWorkout({
           )}
         </div>
 
-        {/* REST PHASE DEDICATED VIEW (Section 7) */}
+        {/* REST PHASE DEDICATED VIEW */}
         {isRestPhase ? (
           <div className="w-full space-y-4 animate-in fade-in duration-200">
             {/* Giant Countdown */}
             <div
-              className="text-7xl sm:text-9xl font-black font-mono tracking-tight text-sky-400 tabular-nums my-1"
+              className="text-7xl sm:text-9xl font-black font-mono tracking-tight text-sky-500 dark:text-sky-400 tabular-nums my-1"
               aria-live="polite"
               aria-label={`Time remaining: ${formatDigitalTime(snapshot.remainingTimeSec)}`}
             >
@@ -263,15 +263,15 @@ export function ActiveWorkout({
             </div>
 
             {/* Next Exercise Prominent Box */}
-            <div className="bg-zinc-900/80 border border-sky-500/30 rounded-2xl p-4 sm:p-5 shadow-xl shadow-sky-950/20 max-w-md mx-auto space-y-1.5">
-              <div className="text-[11px] font-black uppercase tracking-widest text-sky-400 flex items-center justify-center gap-1.5">
+            <div className="bg-white dark:bg-zinc-900/80 border border-sky-400/40 dark:border-sky-500/30 rounded-2xl p-4 sm:p-5 shadow-lg shadow-sky-500/5 dark:shadow-xl dark:shadow-sky-950/20 max-w-md mx-auto space-y-1.5 transition-colors">
+              <div className="text-[11px] font-black uppercase tracking-widest text-sky-600 dark:text-sky-400 flex items-center justify-center gap-1.5">
                 <ArrowRight className="w-3.5 h-3.5" />
                 NEXT
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase">
+              <div className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight uppercase">
                 {context?.nextTarget?.exerciseName ?? context?.exerciseName ?? 'Next Exercise'}
               </div>
-              <div className="text-xs sm:text-sm font-bold text-zinc-400">
+              <div className="text-xs sm:text-sm font-bold text-zinc-500 dark:text-zinc-400">
                 SET {context?.nextTarget?.setNumber ?? 1} / {context?.nextTarget?.totalSets ?? 1}
               </div>
             </div>
@@ -281,7 +281,7 @@ export function ActiveWorkout({
           <div className="w-full space-y-3">
             {/* Current Exercise Title */}
             <div className="space-y-1 px-2">
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase line-clamp-2">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight uppercase line-clamp-2">
                 {context?.exerciseName ?? 'Exercise'}
               </h2>
             </div>
@@ -289,7 +289,7 @@ export function ActiveWorkout({
             {/* Giant Timer Countdown */}
             <div
               className={`text-7xl sm:text-9xl font-black font-mono tracking-tight tabular-nums my-2 ${
-                isPaused ? 'text-zinc-400 opacity-80' : phaseConfig.timerClass
+                isPaused ? 'text-zinc-400 dark:text-zinc-500 opacity-80' : phaseConfig.timerClass
               }`}
               aria-live="polite"
               aria-label={`Time remaining: ${formatDigitalTime(snapshot.remainingTimeSec)}`}
@@ -298,11 +298,11 @@ export function ActiveWorkout({
             </div>
 
             {/* Next Action Banner */}
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 text-xs sm:text-sm font-medium text-zinc-400">
-              <span className="text-zinc-500 font-bold uppercase text-[10px] tracking-wider">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 shadow-sm dark:shadow-none">
+              <span className="text-zinc-400 dark:text-zinc-500 font-bold uppercase text-[10px] tracking-wider">
                 Next:
               </span>
-              <span className="text-zinc-300 font-semibold">{getNextActionText()}</span>
+              <span className="text-zinc-800 dark:text-zinc-300 font-semibold">{getNextActionText()}</span>
             </div>
           </div>
         )}

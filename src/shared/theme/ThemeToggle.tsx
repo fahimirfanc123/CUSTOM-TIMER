@@ -15,7 +15,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
     <div
       role="group"
       aria-label="Theme selector"
-      className={`inline-flex items-center p-1 rounded-xl bg-zinc-900/80 dark:bg-zinc-900/80 border border-zinc-800 text-zinc-400 ${className}`}
+      className={`inline-flex items-center p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 ${className}`}
     >
       {options.map(({ mode, label, icon: Icon }) => {
         const isActive = theme === mode;
@@ -28,8 +28,8 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
             aria-pressed={isActive}
             className={`p-1.5 sm:px-2.5 sm:py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
               isActive
-                ? 'bg-zinc-800 text-white shadow-sm border border-zinc-700/60'
-                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'
+                ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm border border-zinc-200/80 dark:border-zinc-700/60'
+                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-800/50'
             }`}
           >
             <Icon className="w-3.5 h-3.5" />
