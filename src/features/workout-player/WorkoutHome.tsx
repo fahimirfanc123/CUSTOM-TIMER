@@ -16,18 +16,21 @@ import {
   Layers,
   RotateCcw,
   Sparkles,
+  Brain,
 } from 'lucide-react';
 import { formatEstimatedDuration, formatDigitalTime } from '../../core/audio/durationFormatter';
 import { buildSegmentQueue } from '../../core/builder/segmentBuilder';
 import { IWorkoutRepository, defaultWorkoutRepository, SavedWorkout } from '../../core/storage/workoutRepository';
 import { DeleteConfirmDialog } from '../workout-builder/DeleteConfirmDialog';
 import { ThemeToggle } from '../../shared/theme/ThemeToggle';
+import { useOptionalFocusTimer } from '../focus-timer/FocusContext';
 
 export interface WorkoutHomeProps {
   onStartWorkout: (workout: Workout) => void;
   onCreateWorkout?: () => void;
   onEditWorkout?: (saved: SavedWorkout) => void;
   onCustomizePreset?: (preset: Workout) => void;
+  onOpenFocus?: () => void;
   repository?: IWorkoutRepository;
   workouts?: Workout[];
 }
@@ -37,9 +40,12 @@ export function WorkoutHome({
   onCreateWorkout,
   onEditWorkout,
   onCustomizePreset,
+  onOpenFocus,
   repository = defaultWorkoutRepository,
   workouts = demoWorkouts,
 }: WorkoutHomeProps) {
+  const focusCtx = useOptionalFocusTimer();
+  const focusSnapshot = focusCtx?.snapshot;
   const [savedWorkouts, setSavedWorkouts] = useState<SavedWorkout[]>([]);
   const [isLoadingSaved, setIsLoadingSaved] = useState(true);
   const [deleteTarget, setDeleteTarget] = useState<SavedWorkout | null>(null);
@@ -161,6 +167,56 @@ export function WorkoutHome({
             <span>Create Workout</span>
           </button>
         </div>
+
+        {/* Section: Focus / Pomodoro Option */}
+        <section aria-label="Pomodoro focus timer" className="space-y-4">
+          <div className="flex items-center justify-between px-1">
+            <div className="flex items-center gap-2">
+              <h2 className="text-sm font-black uppercase tracking-wider text-zinc-900 dark:text-white">
+                Focus
+              </h2>
+              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                Pomodoro
+              </span>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-emerald-50/80 via-white to-zinc-50 dark:from-emerald-950/30 dark:via-zinc-900/80 dark:to-zinc-900/60 border border-emerald-500/30 rounded-3xl p-5 sm:p-6 shadow-sm dark:shadow-lg dark:shadow-black/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 text-center sm:text-left w-full sm:w-auto">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 mx-auto sm:mx-0">
+                <Brain className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-base sm:text-lg font-black text-zinc-900 dark:text-white">
+                  Pomodoro Focus Timer
+                </h3>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                  {focusSnapshot?.status === 'RUNNING'
+                    ? `Active • ${formatDigitalTime(focusSnapshot.remainingSec)} remaining`
+                    : focusSnapshot?.status === 'PAUSED'
+                    ? `Paused • ${formatDigitalTime(focusSnapshot.remainingSec)}`
+                    : `${Math.round((focusSnapshot?.config.focusDurationSec ?? 1500) / 60)} min focus · ${Math.round((focusSnapshot?.config.shortBreakDurationSec ?? 300) / 60)} min break`}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={onOpenFocus}
+              aria-label="Start or open focus timer"
+              className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md active:scale-98"
+            >
+              <Brain className="w-4 h-4" />
+              <span>
+                {focusSnapshot?.status === 'RUNNING'
+                  ? 'Open Focus Timer'
+                  : focusSnapshot?.status === 'PAUSED'
+                  ? 'Resume Focus'
+                  : 'Start Focus'}
+              </span>
+            </button>
+          </div>
+        </section>
 
         {/* Section: My Workouts (IndexedDB Persisted) */}
         <section aria-label="My custom workouts" className="space-y-4">
