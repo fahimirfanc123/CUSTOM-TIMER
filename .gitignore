@@ -3,3 +3,4 @@ dist
 .vite
 src-tauri/target
 *.txt
+PROFILE_README.md
